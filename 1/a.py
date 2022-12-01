@@ -42,11 +42,15 @@ def part_two(filename):
 assert 24000 == part_one('example.txt')
 assert 1 == part_one('test0.txt')
 print()
-print(f"-> part one answer: {part_one('input.txt')}")
+answer1 = part_one('input.txt')
+print(f"-> part one answer: {answer1}")
 print()
+assert 67450 == answer1
 
 assert 45000 == part_two('example.txt')
 assert 203 == part_two('test1.txt')
 print()
-print(f"-> part two answer: {part_two('input.txt')}")
+answer2 = part_two('input.txt')
+print(f"-> part two answer: {answer2}")
 print()
+assert 199357 == answer2
