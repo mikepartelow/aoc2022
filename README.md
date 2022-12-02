@@ -12,3 +12,4 @@
 ## Answers
 
 - [Day 1](1/a.py)
+- [Day 2](2/a.py)
