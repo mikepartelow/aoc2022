@@ -1,5 +1,4 @@
 import os
-import heapq
 
 THROW_SCORE = dict(
     A=1,
@@ -52,8 +51,8 @@ def part_two(filename):
     my_score = 0
     with open(os.path.abspath(filename)) as f:
         for line in f:
-            parts = line.split()
-            my_score += NEED_SCORE[parts[1]+parts[0]] + RESULT_SCORE[parts[1]]
+            elfos_throw, my_result = line.split()
+            my_score += NEED_SCORE[my_result+elfos_throw] + RESULT_SCORE[my_result]
 
     return my_score
 
