@@ -1,3 +1,4 @@
+"""Solutions for Advent of Code 2022 Day 2"""
 import os
 
 THROW_SCORE = dict(
@@ -9,17 +10,15 @@ THROW_SCORE = dict(
     Z=3,
 )
 
-I_WIN = set([
-    'C X',
-    'A Y',
-    'B Z'
-])
+I_WIN = set(["C X", "A Y", "B Z"])
+
 
 def part_one(filename):
+    """Part 1"""
     my_score = 0
 
-    with open(os.path.abspath(filename)) as f:
-        for line in f:
+    with open(os.path.abspath(filename), encoding="utf-8") as file:
+        for line in file:
             elfos_throw, my_throw = [THROW_SCORE[t] for t in line.split()]
             my_score += my_throw
             if my_throw == elfos_throw:
@@ -28,6 +27,7 @@ def part_one(filename):
                 my_score += 6
 
     return my_score
+
 
 NEED_SCORE = dict(
     XA=3,
@@ -42,30 +42,35 @@ NEED_SCORE = dict(
 )
 
 RESULT_SCORE = dict(
-    X = 0,
-    Y = 3,
-    Z = 6,
+    X=0,
+    Y=3,
+    Z=6,
 )
 
+
 def part_two(filename):
+    """Part 2"""
     my_score = 0
-    with open(os.path.abspath(filename)) as f:
-        for line in f:
+    with open(os.path.abspath(filename), encoding="utf-8") as file:
+        for line in file:
             elfos_throw, my_result = line.split()
-            my_score += NEED_SCORE[my_result+elfos_throw] + RESULT_SCORE[my_result]
+            my_score += NEED_SCORE[my_result + elfos_throw] + RESULT_SCORE[my_result]
 
     return my_score
 
-def assert_answer(fn, filename, want):
-    got = fn(filename)
-    print(f"{fn.__name__}({filename}) -> {got}")
+
+def assert_answer(func, filename, want):
+    """Call func(filename), print the result, assert result == want"""
+    got = func(filename)
+    print(f"{func.__name__}({filename}) -> {got}")
     assert got == want, f"got {got}, want {want}"
 
-assert_answer(part_one, 'example.txt', 15)
-assert_answer(part_one, 'test0.txt', 30)
-assert_answer(part_one, 'input.txt', 8392)
 
-assert_answer(part_two, 'example.txt', 12)
-assert_answer(part_two, 'test0.txt', 30)
-assert_answer(part_two, 'test1.txt', 15)
-assert_answer(part_two, 'input.txt', 10116)
+assert_answer(part_one, "example.txt", 15)
+assert_answer(part_one, "test0.txt", 30)
+assert_answer(part_one, "input.txt", 8392)
+
+assert_answer(part_two, "example.txt", 12)
+assert_answer(part_two, "test0.txt", 30)
+assert_answer(part_two, "test1.txt", 15)
+assert_answer(part_two, "input.txt", 10116)
