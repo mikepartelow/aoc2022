@@ -5,7 +5,7 @@
 ## How To
 
 ```shell
-% cd 1
+% cd day01
 % python3 ./a.py
 ```
 
