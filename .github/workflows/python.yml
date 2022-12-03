@@ -19,4 +19,4 @@ jobs:
     - name: test
       run: make test
       env:
-        PYTHONPATH=.
+        PYTHONPATH: /home/runner/work/aoc2022/aoc2022/
