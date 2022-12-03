@@ -5,7 +5,7 @@ lint:
 fmt:
 	black .
 
-SUBDIRS := $(wildcard */.)
+SUBDIRS := $(wildcard day*/.)
 test: $(SUBDIRS)
 $(SUBDIRS):
 	cd $@ && python ./a.py

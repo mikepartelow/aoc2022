@@ -1,9 +1,10 @@
 """Solutions for Advent of Code 2022 Day 3"""
 import os
+from lib import assert_answer, input_path
 
 
 def parse_items(line):
-    """Return a tuple line split in halves."""
+    """Return a tuple of line split in halves."""
     line = line.strip()
     midline = int(len(line) / 2)
     return line[:midline], line[midline:]
@@ -62,13 +63,6 @@ def part_two(filename):
         return sum(priorities)
 
 
-def assert_answer(func, filename, want):
-    """Call func(filename), print the result, assert result == want"""
-    got = func(filename)
-    print(f"{func.__name__}({filename}) -> {got}")
-    assert got == want, f"got {got}, want {want}"
-
-
 assert_answer(item_priority, "a", 1)
 assert_answer(item_priority, "m", 13)
 assert_answer(item_priority, "z", 26)
@@ -76,10 +70,10 @@ assert_answer(item_priority, "A", 27)
 assert_answer(item_priority, "M", 39)
 assert_answer(item_priority, "Z", 52)
 
-assert_answer(part_one, "example.txt", 157)
-assert_answer(part_one, "test0.txt", 157)
-assert_answer(part_one, "input.txt", 7793)
+assert_answer(part_one, input_path("example.txt"), 157)
+assert_answer(part_one, input_path("test0.txt"), 157)
+assert_answer(part_one, input_path("input.txt"), 7793)
 
-assert_answer(part_two, "example.txt", 70)
-assert_answer(part_two, "test1.txt", 3)
-assert_answer(part_two, "input.txt", 2499)
+assert_answer(part_two, input_path("example.txt"), 70)
+assert_answer(part_two, input_path("test1.txt"), 3)
+assert_answer(part_two, input_path("input.txt"), 2499)

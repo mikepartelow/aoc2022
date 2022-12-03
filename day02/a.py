@@ -1,5 +1,6 @@
 """Solutions for Advent of Code 2022 Day 2"""
 import os
+from lib import assert_answer, input_path
 
 THROW_SCORE = dict(
     A=1,
@@ -59,18 +60,11 @@ def part_two(filename):
     return my_score
 
 
-def assert_answer(func, filename, want):
-    """Call func(filename), print the result, assert result == want"""
-    got = func(filename)
-    print(f"{func.__name__}({filename}) -> {got}")
-    assert got == want, f"got {got}, want {want}"
+assert_answer(part_one, input_path("example.txt"), 15)
+assert_answer(part_one, input_path("test0.txt"), 30)
+assert_answer(part_one, input_path("input.txt"), 8392)
 
-
-assert_answer(part_one, "example.txt", 15)
-assert_answer(part_one, "test0.txt", 30)
-assert_answer(part_one, "input.txt", 8392)
-
-assert_answer(part_two, "example.txt", 12)
-assert_answer(part_two, "test0.txt", 30)
-assert_answer(part_two, "test1.txt", 15)
-assert_answer(part_two, "input.txt", 10116)
+assert_answer(part_two, input_path("example.txt"), 12)
+assert_answer(part_two, input_path("test0.txt"), 30)
+assert_answer(part_two, input_path("test1.txt"), 15)
+assert_answer(part_two, input_path("input.txt"), 10116)

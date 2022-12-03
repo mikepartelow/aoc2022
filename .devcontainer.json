@@ -8,6 +8,9 @@
 		"ghcr.io/devcontainers-contrib/features/flake8:1": {},
 		"ghcr.io/devcontainers-contrib/features/mypy:1": {},
 		"ghcr.io/devcontainers-contrib/features/pylint:1": {}
+	},
+	"containerEnv": {
+		"PYTHONPATH": "/workspaces/aoc2022"
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
