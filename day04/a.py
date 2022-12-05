@@ -9,9 +9,9 @@ def part_one(filename):
         overlaps = 0
 
         for line in file:
-            ranges = line.split(',')
-            lo_a, hi_a = [int(n) for n in ranges[0].split('-')]
-            lo_b, hi_b = [int(n) for n in ranges[1].split('-')]
+            ranges = line.split(",")
+            lo_a, hi_a = [int(n) for n in ranges[0].split("-")]
+            lo_b, hi_b = [int(n) for n in ranges[1].split("-")]
 
             if lo_a >= lo_b and hi_a <= hi_b or lo_b >= lo_a and hi_b <= hi_a:
                 overlaps += 1
@@ -30,13 +30,14 @@ def part_two(filename):
         overlaps = 0
 
         for line in file:
-            ranges = line.split(',')
+            ranges = line.split(",")
 
-            range_a = [int(n) for n in ranges[0].split('-')]
-            range_b = [int(n) for n in ranges[1].split('-')]
+            range_a = [int(n) for n in ranges[0].split("-")]
+            range_b = [int(n) for n in ranges[1].split("-")]
 
-            if lhs_contains_rhs(*range_a, *range_b) or \
-               lhs_contains_rhs(*range_b, *range_a):
+            if lhs_contains_rhs(*range_a, *range_b) or lhs_contains_rhs(
+                *range_b, *range_a
+            ):
                 overlaps += 1
 
     return overlaps

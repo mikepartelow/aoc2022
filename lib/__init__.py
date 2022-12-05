@@ -3,10 +3,13 @@ import os
 import inspect
 
 
-def assert_answer(func, filename, want):
-    """Call func(filename), print the result, assert result == want"""
-    got = func(filename)
-    print(f"{func.__name__}({filename}) -> {got}")
+def assert_answer(func, args, want):
+    """Call func(*args), print the result, assert result == want"""
+    if isinstance(args, tuple):
+        got = func(*args)
+    else:
+        got = func(args)
+    print(f"{func.__name__}({args}) -> {got}")
     assert got == want, f"got {got}, want {want}"
 
 
