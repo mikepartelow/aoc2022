@@ -29,34 +29,33 @@ def marker_index(buf, marker_len):
     return None
 
 
-examples = (
-    ("abcde", 4),
-    ("mjqjpqmgbljsphdztnvjfqwrcgsmlb", 7),
-    ("bvwbjplbgvbhsrlpgdmjqwftvncz", 5),
-    ("nppdvjthqldpwncqszvftbrmjlhg", 6),
-    ("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 10),
-    ("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 11),
+EXAMPLES = (
+    "mjqjpqmgbljsphdztnvjfqwrcgsmlb",
+    "bvwbjplbgvbhsrlpgdmjqwftvncz",
+    "nppdvjthqldpwncqszvftbrmjlhg",
+    "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg",
+    "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw",
+)
+
+ANSWERS1 = (
+    7, 5, 6, 10, 11
 )
 
 MARKER_LEN1 = 4
 
-for example, answer in examples:
+for example, answer in zip(EXAMPLES, ANSWERS1):
     assert_answer(marker_index, (example, MARKER_LEN1), answer)
 
 with open(input_path("input.txt"), encoding="utf-8") as f:
     assert_answer(marker_index, (f.read(), MARKER_LEN1), 1034)
 
-examples = (
-    ("mjqjpqmgbljsphdztnvjfqwrcgsmlb", 19),
-    ("bvwbjplbgvbhsrlpgdmjqwftvncz", 23),
-    ("nppdvjthqldpwncqszvftbrmjlhg", 23),
-    ("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 29),
-    ("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 26),
+ANSWERS2 = (
+    19, 23, 23, 29, 26
 )
 
 MARKER_LEN2 = 14
 
-for example, answer in examples:
+for example, answer in zip(EXAMPLES, ANSWERS2):
     assert_answer(marker_index, (example, MARKER_LEN2), answer)
 
 with open(input_path("input.txt"), encoding="utf-8") as f:
