@@ -1,4 +1,4 @@
-"""Solutions for Advent of Code 2022 Day 3"""
+"""Solutions for Advent of Code 2022 Day 5"""
 import os
 from lib import assert_answer, input_path
 
