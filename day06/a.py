@@ -37,9 +37,7 @@ EXAMPLES = (
     "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw",
 )
 
-ANSWERS1 = (
-    7, 5, 6, 10, 11
-)
+ANSWERS1 = (7, 5, 6, 10, 11)
 
 MARKER_LEN1 = 4
 
@@ -49,9 +47,7 @@ for example, answer in zip(EXAMPLES, ANSWERS1):
 with open(input_path("input.txt"), encoding="utf-8") as f:
     assert_answer(marker_index, (f.read(), MARKER_LEN1), 1034)
 
-ANSWERS2 = (
-    19, 23, 23, 29, 26
-)
+ANSWERS2 = (19, 23, 23, 29, 26)
 
 MARKER_LEN2 = 14
 
