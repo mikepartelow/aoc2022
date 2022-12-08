@@ -15,28 +15,29 @@ def parse_forest(lines):
     return forest
 
 
-def tree_is_visible(forest, y, x, height=None, offsets=None):
+def tree_is_visible(forest, y, x):
     """Returns True if a tree is visible from outside the forest."""
-    if y == 0 or x == 0 or y == len(forest) - 1 or x == len(forest[0]) - 1:
-        return True
-
-    if offsets is None:
-        offsets = ((-1, 0), (1, 0), (0, -1), (0, 1))
-
-    if height is None:
-        height = forest[y][x]
+    offsets = ((-1, 0), (1, 0), (0, -1), (0, 1))
 
     for offset in offsets:
         yy, xx = y + offset[0], x + offset[1]
-        neighbor = forest[yy][xx]
-
-        if neighbor < height and tree_is_visible(forest, yy, xx, height, (offset,)):
+        if not inbounds(forest, yy, xx):
             return True
+
+        while True:
+            if forest[yy][xx] >= forest[y][x]:
+                break
+
+            yy += offset[0]
+            xx += offset[1]
+
+            if not inbounds(forest, yy, xx):
+                return True
 
     return False
 
 
-def inbounds(y, x, forest):
+def inbounds(forest, y, x):
     """Returns True if (y, x) are within the bounds of forest."""
     return 0 <= y < len(forest) and 0 <= x < len(forest[0])
 
@@ -46,7 +47,7 @@ def viewing_distance(forest, y, x, offset):
     vd = 0
 
     yy, xx = y + offset[0], x + offset[1]
-    while inbounds(yy, xx, forest):
+    while inbounds(forest, yy, xx):
         vd += 1
 
         if forest[yy][xx] >= forest[y][x]:
@@ -71,40 +72,41 @@ def scenic_score(forest, y, x):
     return math.prod(viewing_distances)
 
 
-def part_one(filename):
-    """Part 1"""
+def solve(filename, part2=False):
+    """Solve it."""
     with open(os.path.abspath(filename), encoding="utf-8") as file:
         forest = parse_forest(file.read().splitlines())
 
     visible_trees = []
-
-    # pylint: disable=consider-using-enumerate
-    for y in range(len(forest)):
-        for x in range(len(forest[0])):
-            if tree_is_visible(forest, y, x):
-                visible_trees.append((y, x, forest[y][x]))
-
-    return len(visible_trees)
-
-
-def part_two(filename):
-    """Part 2"""
-    with open(os.path.abspath(filename), encoding="utf-8") as file:
-        forest = parse_forest(file.read().splitlines())
+    scenic_scores = []
 
     if filename.endswith("example.txt"):
         assert scenic_score(forest, 1, 2) == 4
         assert scenic_score(forest, 3, 2) == 8
 
-    scenic_scores = []
-
     # pylint: disable=consider-using-enumerate
     for y in range(len(forest)):
         for x in range(len(forest[0])):
-            score = scenic_score(forest, y, x)
-            scenic_scores.append(score)
+            if part2:
+                scenic_scores.append(scenic_score(forest, y, x))
+            else:
+                if tree_is_visible(forest, y, x):
+                    visible_trees.append((y, x, forest[y][x]))
 
-    return max(scenic_scores)
+    if part2:
+        return max(scenic_scores)
+
+    return len(visible_trees)
+
+
+def part_one(filename):
+    """Part 1"""
+    return solve(filename)
+
+
+def part_two(filename):
+    """Part 2"""
+    return solve(filename, part2=True)
 
 
 assert_answer(part_one, input_path("example.txt"), 21)
