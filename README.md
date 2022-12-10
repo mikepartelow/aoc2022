@@ -18,4 +18,6 @@
 - [Day 5](day05/a.py)
 - [Day 6](day06/a.py)
 - [Day 7](day07/a.py)
-- [Day 8](day08/a.py) 
+- [Day 8](day08/a.py)
+- [Day 9](day09/a.py) 
+- [Day 10](day10/a.py) 
