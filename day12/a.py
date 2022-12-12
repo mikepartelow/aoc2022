@@ -26,7 +26,7 @@ def find_start_and_end(hmap):
 def solve(hmap, part2=False):
     """Solve it."""
 
-    # use Djijstra's algo to compute the length of the shortest path
+    # use Djikstra's algo to compute the length of the shortest path
     # from end to start (not start to end!)
     heights = []
     for row in hmap.splitlines():
