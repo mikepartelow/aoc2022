@@ -21,5 +21,6 @@
 - [Day 8](day08/a.py)
 - [Day 9](day09/a.py) 
 - [Day 10](day10/a.py) 
-- [Day 10](day11/a.py) 
-- [Day 10](day12/a.py) 
+- [Day 11](day11/a.py) 
+- [Day 12](day12/a.py) 
+- [Day 13](day13/a.py) 
