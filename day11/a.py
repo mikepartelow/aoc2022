@@ -153,4 +153,4 @@ assert_answer(solve, monkeys0, 10605)
 assert_answer(solve, monkeys1, 151312)
 
 assert_answer(solve, (monkeys0, True), 2713310158)
-assert_answer(solve, (monkeys1, True), 2713310158)
+assert_answer(solve, (monkeys1, True), 51382025916)
